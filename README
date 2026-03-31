@@ -1,0 +1,94 @@
+# 🎬 CineReview API
+
+API REST para gerenciamento e avaliação de filmes, desenvolvida com Django e Django REST Framework.
+
+---
+
+## 📌 Sobre o Projeto
+
+O CineReview API é um sistema backend inspirado em plataformas de avaliação de filmes, como o Letterboxd.  
+
+A aplicação permite cadastrar filmes, registrar avaliações com nota e comentário, e consultar médias de avaliação através de endpoints REST que retornam dados em formato JSON.
+
+O projeto foi desenvolvido com foco em boas práticas de modelagem de dados, arquitetura MTV do Django e organização de código.
+
+---
+
+## 🚀 Funcionalidades
+
+- Cadastro de filmes
+- Classificação por gênero utilizando `choices`
+- Registro de avaliações (nota de 1 a 5)
+- Relacionamento entre filmes e avaliações (ForeignKey)
+- Cálculo de média de avaliações utilizando ORM
+- Endpoint para listagem geral
+- Endpoint para listagem de filmes bem avaliados
+- Gerenciamento completo via Django Admin
+
+---
+
+## 🧠 Modelagem
+
+### 🎬 Filme
+- `titulo` (CharField)
+- `descricao` (TextField)
+- `genero` (CharField com choices)
+- `ano_lancamento` (IntegerField)
+
+### ⭐ Avaliacao
+- `filme` (ForeignKey)
+- `nota` (IntegerField com choices)
+- `comentario` (TextField)
+- `data_avaliacao` (DateTimeField)
+
+---
+
+## 📡 Endpoints
+
+### 🔹 Listar todos os filmes
+
+
+Retorna todos os filmes com média de avaliações.
+
+### 🔹 Listar filmes bem avaliados
+
+
+Retorna apenas filmes com média maior ou igual a 4.
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- Python 3
+- Django
+- Django REST Framework
+- SQLite
+- Git & GitHub
+
+---
+
+## ⚙️ Como Executar Localmente
+
+```bash
+# Clonar repositório
+git clone <url-do-seu-repositorio>
+
+# Entrar na pasta
+cd cinereview-api
+
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar ambiente (Windows)
+venv\Scripts\activate
+
+# Instalar dependências
+pip install -r requirements.txt
+
+# Aplicar migrações
+python manage.py migrate
+
+# Executar servidor
+python manage.py runserver
+
+http://127.0.0.1:8000/
